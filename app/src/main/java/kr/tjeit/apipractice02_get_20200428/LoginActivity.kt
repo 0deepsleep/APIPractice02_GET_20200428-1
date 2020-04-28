@@ -1,5 +1,6 @@
 package kr.tjeit.apipractice02_get_20200428
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -43,6 +44,9 @@ class LoginActivity : BaseActivity() {
                         val token = data.getString("token")
 
                         ContextUtil.setUserToken(mContext, token)
+
+                        val myIntent = Intent(mContext, MyPageActivity::class.java)
+                        startActivity(myIntent)
 
                     }
                     else {
