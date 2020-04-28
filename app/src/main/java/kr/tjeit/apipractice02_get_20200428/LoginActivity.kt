@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
+import kr.tjeit.apipractice02_get_20200428.datas.User
 import kr.tjeit.apipractice02_get_20200428.utils.ConnectServer
 import kr.tjeit.apipractice02_get_20200428.utils.ContextUtil
 import org.json.JSONObject
@@ -42,6 +43,8 @@ class LoginActivity : BaseActivity() {
 
                         val user = data.getJSONObject("user")
                         val token = data.getString("token")
+
+                        val loginUser = User.getUserFromJsonObject(user)
 
                         ContextUtil.setUserToken(mContext, token)
 
