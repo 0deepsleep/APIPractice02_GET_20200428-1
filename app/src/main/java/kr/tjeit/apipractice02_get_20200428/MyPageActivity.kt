@@ -45,6 +45,7 @@ class MyPageActivity : BaseActivity() {
 
         nameTxt.text = GlobalData.loginUser?.name
         phoneTxt.text = GlobalData.loginUser?.phoneNum
+        storeCategoryTxt.text = GlobalData.loginUser?.storeCategory?.title
 
     }
 

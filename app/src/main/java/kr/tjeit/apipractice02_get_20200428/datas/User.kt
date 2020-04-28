@@ -14,6 +14,8 @@ class User {
             parsedUser.phoneNum = json.getString("phone")
             parsedUser.memo = json.getString("memo")
 
+            parsedUser.storeCategory = Category.getCategoryFromJson(json.getJSONObject("category"))
+
             return parsedUser
         }
     }
