@@ -2,7 +2,11 @@ package kr.tjeit.apipractice02_get_20200428
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
+import kr.tjeit.apipractice02_get_20200428.utils.ConnectServer
+import org.json.JSONObject
 
 class LoginActivity : BaseActivity() {
 
@@ -19,6 +23,39 @@ class LoginActivity : BaseActivity() {
 
         loginBtn.setOnClickListener {
 //            아이디 / 비번 받아서 => 서버에 로그인 요청
+
+            val id = idEdt.text.toString()
+            val pw = pwEdt.text.toString()
+
+            ConnectServer.postRequestLogin(mContext, id, pw, object : ConnectServer.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
+
+                    Log.d("로그인응답", json.toString())
+
+                    val code = json.getInt("code")
+
+                    if (code == 200) {
+
+                        val data = json.getJSONObject("data")
+
+                        val user = data.getJSONObject("user")
+                        val token = data.getString("token")
+
+                    }
+                    else {
+                        val message = json.getString("message")
+
+                        runOnUiThread {
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+
+
+                }
+
+            })
+
         }
 
     }
