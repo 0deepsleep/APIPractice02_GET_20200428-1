@@ -4,6 +4,8 @@ import java.util.*
 
 class Post {
 
+
+
     var phoneNum = ""
     var title = ""
     var content = ""
