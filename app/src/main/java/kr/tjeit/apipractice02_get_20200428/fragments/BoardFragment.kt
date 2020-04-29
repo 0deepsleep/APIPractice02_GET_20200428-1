@@ -55,6 +55,16 @@ class BoardFragment : BaseFragment() {
                     for (i in 0..blackLists.length()-1) {
                         val postJson = blackLists.getJSONObject(i)
 
+//                        게시글 JSON => Post형태로 변경
+                        val postObject = Post.getPostFromJson(postJson)
+
+//                        변경된 객체를 posts에 추가
+                        posts.add(postObject)
+
+                    }
+
+                    for (post in posts) {
+                        Log.d("게시글제목", post.title)
                     }
 
                 }
