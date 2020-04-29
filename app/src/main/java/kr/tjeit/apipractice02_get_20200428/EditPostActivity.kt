@@ -3,6 +3,7 @@ package kr.tjeit.apipractice02_get_20200428
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_edit_post.*
 import kr.tjeit.apipractice02_get_20200428.utils.ConnectServer
@@ -35,6 +36,15 @@ class EditPostActivity : BaseActivity() {
                     override fun onResponse(json: JSONObject) {
 
                         Log.d("게시글작성응답", json.toString())
+
+                        val code = json.getInt("code")
+
+                        if (code == 200) {
+                            runOnUiThread {
+                                Toast.makeText(mContext, "게시글 작성 완료", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+                        }
 
                     }
 

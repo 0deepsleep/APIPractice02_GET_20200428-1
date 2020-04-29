@@ -47,9 +47,14 @@ class BoardFragment : BaseFragment() {
         postAdaper = PostAdapter(mContext, R.layout.post_list_item, posts)
         postListView.adapter = postAdaper
 
-        getPostsFromServer()
-
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        getPostsFromServer()
+    }
+
 
     fun getPostsFromServer() {
 
@@ -60,6 +65,12 @@ class BoardFragment : BaseFragment() {
                 val code = json.getInt("code")
 
                 if (code == 200) {
+
+//                    기존에 받아둔 게시글들은 전부 삭제
+//                    새로 받아온 게시글로 목록을 채우자.
+
+                    posts.clear()
+
                     val data = json.getJSONObject("data")
                     val blackLists = data.getJSONArray("black_lists")
 
