@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_board.*
 import kr.tjeit.apipractice02_get_20200428.R
+import kr.tjeit.apipractice02_get_20200428.adapters.PostAdapter
 import kr.tjeit.apipractice02_get_20200428.datas.Post
 import kr.tjeit.apipractice02_get_20200428.utils.ConnectServer
 import org.json.JSONObject
 
 class BoardFragment : BaseFragment() {
 
+    lateinit var postAdaper:PostAdapter
     val posts = ArrayList<Post>()
 
     override fun onCreateView(
@@ -34,6 +37,9 @@ class BoardFragment : BaseFragment() {
     }
 
     override fun setValues() {
+
+        postAdaper = PostAdapter(mContext, R.layout.post_list_item, posts)
+        postListView.adapter = postAdaper
 
         getPostsFromServer()
 
@@ -61,6 +67,11 @@ class BoardFragment : BaseFragment() {
 //                        변경된 객체를 posts에 추가
                         posts.add(postObject)
 
+                    }
+
+                    activity?.runOnUiThread {
+
+                        postAdaper.notifyDataSetChanged()
                     }
 
                     for (post in posts) {
