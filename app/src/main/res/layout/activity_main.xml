@@ -7,4 +7,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <fragment
+        android:tag="boardFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="kr.tjeit.apipractice02_get_20200428.fragments.BoardFragment" />
+
 </LinearLayout>

@@ -49,7 +49,7 @@ class SplashActivity : BaseActivity() {
                         val nowUser = User.getUserFromJsonObject(user)
                         GlobalData.loginUser = nowUser
 
-                        val myIntent = Intent(mContext, MyPageActivity::class.java)
+                        val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
                         finish()
 
