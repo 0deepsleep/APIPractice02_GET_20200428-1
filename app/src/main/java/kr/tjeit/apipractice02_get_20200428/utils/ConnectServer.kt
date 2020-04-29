@@ -15,7 +15,7 @@ class ConnectServer {
 
     companion object {
 
-        private val BASE_URL = "http://192.168.0.243:5000"
+        private val BASE_URL = "http://192.168.10.224:5000"
 
         fun postRequestLogin(
             context: Context,
